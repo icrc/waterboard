@@ -1,3 +1,5 @@
+# Warning not working with Git bash
+# use power shell version
 cd "$(dirname "$0")"
-DOCKER_ID=`docker-compose ps -q waterboard-web`
-docker exec -i $DOCKER_ID  sh /install-database.sh
+docker-compose exec waterboard-web sh /code/install-database.sh
+

@@ -10,7 +10,7 @@ RUN mkdir /code
 WORKDIR /code
 
 COPY wait-for-it.sh /
-COPY install-database.sh /
+COPY install-database.sh /code/
 COPY REQUIREMENTS.txt  /code/
 RUN apt-get update && apt-get install -y --no-install-recommends postgresql-client \
 && rm -rf /var/lib/apt/lists/* \
@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends postgresql-clie
 && pip3 install --no-cache-dir GDAL \
 && pip3 install --no-cache-dir -r REQUIREMENTS.txt \
 && chmod +x /wait-for-it.sh \
-&& chmod +x /install-database.sh \
+&& chmod +x /code/install-database.sh \
 && ln -s /usr/lib/x86_64-linux-gnu/libgeos_c.so.1 /usr/lib \
 && ln -s /usr/lib/x86_64-linux-gnu/libgeos_c.so /usr/lib
 COPY . /code/
