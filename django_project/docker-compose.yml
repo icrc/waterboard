@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+    # Database
+    waterboard-postgres:
+        image: kartoza/postgis:12.4
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASS=postgres
+            - POSTGRES_DBNAME=waterboard
+            - POSTGRES_MULTIPLE_EXTENSIONS=postgis,hstore,postgis_topology,postgis_raster,pgrouting
+            - DATADIR:/opt/postgres/data
+        volumes:
+            - waterboard-postgres-data:/opt/postgresql/data
+        ports:
+            - 5432:5432
+
+    waterboard-web:
+        build: src
+        environment:
+            - PGDATABASE=waterboard
+            - PGUSER=postgres
+            - PGPASSWORD=postgres
+            - PGHOST=waterboard-postgres
+            - PGPORT=5432
+            - DJANGO_SETTINGS_MODULE=core.settings.dev_docker
+        depends_on:
+            - waterboard-postgres
+        command: bash -c "/wait-for-it.sh waterboard-postgres:5432 && python3 manage.py runserver 0.0.0.0:8000"
+        ports:
+            - 8000:8000
+
+volumes:
+    waterboard-postgres-data:
+        name: waterboard-postgres-data
+        driver: local
