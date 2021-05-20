@@ -26,7 +26,6 @@ services:
             - DJANGO_SETTINGS_MODULE=core.settings.dev_docker
         depends_on:
             - waterboard-postgres
-        command: bash -c "/wait-for-it.sh waterboard-postgres:5432 && python3 manage.py runserver 0.0.0.0:8000"
         ports:
             - 8000:8000
 
