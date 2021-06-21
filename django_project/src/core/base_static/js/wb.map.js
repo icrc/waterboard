@@ -81,7 +81,7 @@ function wbMap(conf) {
             return leafletConf;
         }
 
-        mapConf.layers =  _layerConf[activeLayer || 'MapBox'];
+        mapConf.layers =  _layerConf[activeLayer || 'OSM'];
 
         leafletConf = mapConf;
 

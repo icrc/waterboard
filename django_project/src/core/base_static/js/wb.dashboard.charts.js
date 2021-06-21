@@ -77,7 +77,7 @@ DashboardController.prototype = {
             .leafletConf({
                 zoom: 6,
                 editable: true
-            }, 'MapBox')
+            }, 'OSM')
             .markerRenderer(createDashBoardMarker)
             .initMapSearch({
                 parentId: 'geo-search-wrap'

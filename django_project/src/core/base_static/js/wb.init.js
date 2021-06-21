@@ -138,7 +138,7 @@ var WB = (function (module) {
               .leafletConf({
                 zoom: 12,
                 editable: true
-              }, 'MapBox')
+              }, 'OSM')
               .markerRenderer(createFeatureByUUidMarker)
               .initMapSearch({
                 parentId: 'geo-search-wrap'
@@ -372,7 +372,7 @@ var WB = (function (module) {
           .leafletConf({
             zoom: 12,
             editable: true
-          }, 'MapBox')
+          }, 'OSM')
           .markerRenderer(createFeatureByUUidMarker)
           .initMapSearch({
             parentId: 'geo-search-wrap'
