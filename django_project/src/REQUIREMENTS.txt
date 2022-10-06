@@ -1,6 +1,6 @@
 Django>=1.11,<5.0
 django-redis==5.2.0
-psycopg2==2.7.3.2
+psycopg2==2.9.3
 pytz
 django-pipeline>=1.6,<2.1
 raven==6.9.0
