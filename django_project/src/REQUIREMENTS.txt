@@ -10,7 +10,7 @@ Pillow==9.3.0
 Celery>=4.1.0,<5.3.0
 xhtml2pdf==0.2.8
 requests==2.28.1
-googlemaps==4.6.0
+googlemaps==4.7.0
 openpyxl==3.0.10
 django-leaflet==0.28.3
 fiona==1.8.22
