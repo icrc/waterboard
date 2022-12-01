@@ -16,7 +16,7 @@
     "babel-loader": "7.1.5",
     "babel-plugin-add-module-exports": "1.0.4",
     "babel-preset-es2015": "6.24.1",
-    "chai": "4.3.6",
+    "chai": "4.3.7",
     "eslint": "8.28.0",
     "eslint-loader": "4.0.2",
     "mocha": "10.1.0",
