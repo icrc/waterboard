@@ -13,7 +13,7 @@ COPY wait-for-it.sh /
 COPY start.sh /
 COPY install-database.sh /code/
 COPY REQUIREMENTS.txt  /code/
-RUN apt-get update && apt-get install -y --no-install-recommends postgresql-client \
+RUN apt-get update && apt-get install -y --no-install-recommends openssh-server postgresql-client \
 && rm -rf /var/lib/apt/lists/* \
 && pip3 install --no-cache-dir --upgrade pip \
 && pip3 install --no-cache-dir --upgrade setuptools \
@@ -23,7 +23,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends postgresql-clie
 && chmod +x /start.sh \
 && chmod +x /code/install-database.sh \
 && ln -s /usr/lib/x86_64-linux-gnu/libgeos_c.so.1 /usr/lib \
-&& ln -s /usr/lib/x86_64-linux-gnu/libgeos_c.so /usr/lib
+&& ln -s /usr/lib/x86_64-linux-gnu/libgeos_c.so /usr/lib \
+&& echo "root:Docker!" | chpasswd
 COPY . /code/
 
+COPY sshd_config /etc/ssh/
+
+EXPOSE 8000 2222
 CMD ["/start.sh"]
